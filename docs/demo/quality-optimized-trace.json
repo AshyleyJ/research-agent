@@ -1,0 +1,234 @@
+{
+  "events": [
+    {
+      "node": "plan",
+      "roles": {
+        "progress": [
+          "iterative retrieval reranking long document QA",
+          "graph or hierarchical index retrieval long context"
+        ],
+        "limitations": [
+          "long document QA benchmark evaluation limitations",
+          "retrieval augmented generation failure cases hallucination"
+        ]
+      }
+    },
+    {
+      "node": "investigate",
+      "workers": [
+        {
+          "role": "progress",
+          "queries": [
+            "iterative retrieval reranking long document question answering",
+            "hierarchical index retrieval long context question answering",
+            "long-document RAG benchmark evaluation limitations failure cases"
+          ],
+          "cache_hits": 0,
+          "papers": 15,
+          "errors": []
+        },
+        {
+          "role": "limitations",
+          "queries": [
+            "long document QA benchmark evaluation limitations",
+            "retrieval augmented generation failure cases hallucination",
+            "QUEST-LOFT retrieval evaluation protocol multi-document reasoning"
+          ],
+          "cache_hits": 0,
+          "papers": 14,
+          "errors": []
+        }
+      ]
+    },
+    {
+      "node": "merge"
+    },
+    {
+      "node": "organize",
+      "valid_cards": 10,
+      "warnings": []
+    },
+    {
+      "node": "draft"
+    },
+    {
+      "node": "critique",
+      "critique": {
+        "coverage": 3,
+        "evidence": 4,
+        "clarity": 5,
+        "needs_revision": true,
+        "issues": [],
+        "details": [
+          {
+            "issue_id": "I1",
+            "category": "scope",
+            "location": "摘要；范围界定与文献关系表；代表性方法路线（1）（2）；小结第1条",
+            "quote": "迭代检索与重排类工作 [1][5][7] 属相邻任务，仅作补充参考。",
+            "reason": "主题核心是 long-document QA，但稿件把 [1][5][7] 归为“相邻任务、仅作补充参考”，却仍将其作为“代表性方法路线”的第（1）（2）条主体内容，占方法章节近一半篇幅。结果是：直接相关文献仅剩 [2][4][6] 三篇，其中 [2][6] 为视觉/多模态文档，[4] 为多文档分散信息评测，纯文本单篇长文档 RAG 方法在给定文献中实际为零。稿件虽在缺口部分提到“长文档与多文档界限未清晰区分”，但未把这一覆盖缺口收缩为明确的交付范围声明（例如“本报告不覆盖纯文本单篇长文档 RAG 方法，因给定文献中无此类摘要”），导致标题承诺的“代表性方法”与实际证据不匹配。",
+            "action": "rewrite",
+            "severity": "blocking",
+            "status": "open",
+            "search_query": "single long document retrieval augmented generation question answering method"
+          },
+          {
+            "issue_id": "I2",
+            "category": "overclaim",
+            "location": "代表性方法路线（4）输出格式与验证流程",
+            "quote": "这说明“RAG 与长上下文孰优”在摘要层面取决于输出格式与验证步骤，而非仅由检索环节决定。",
+            "reason": "[4] 摘要仅称在 QUEST-LOFT 上、配合结构化输出与可选再验证时 RAG 可显著优于长上下文方法，属单一基准、单一设置下的作者报告结果。稿件由此推出“孰优取决于输出格式与验证步骤”的一般性判断，超出摘要可支持范围；且未标注该结论仅来自一个基准、未说明是否有人工评测口径差异（[4] 提到更新数字但未给幅度）。",
+            "action": "rewrite",
+            "severity": "advisory",
+            "status": "open",
+            "search_query": ""
+          },
+          {
+            "issue_id": "I3",
+            "category": "evidence",
+            "location": "失败案例：作者报告的实验结果类",
+            "quote": "用其视觉元素标注丰富输入可使差距缩小 17–24% [2]",
+            "reason": "数值与摘要原句“narrows the performance gap by 17-24%”一致，但稿件未说明该百分比是相对差距缩小还是绝对点提升，也未说明基线设置（四种证据设置中的哪一种）。摘要本身未给出定义，稿件应显式标注“摘要未说明该比例的基数与口径”，避免读者误读为绝对准确率提升。",
+            "action": "disclose",
+            "severity": "advisory",
+            "status": "open",
+            "search_query": ""
+          },
+          {
+            "issue_id": "I4",
+            "category": "citation",
+            "location": "评测局限 其三；本次调研的证据缺口第2条",
+            "quote": "QUEST-LOFT 工作基于细致人工评测发布了更新后的数字 [4]，摘要未给出更新幅度，因此只能说明自动指标下的原始分数需要人工核验，不能推断偏差大小。",
+            "reason": "此处对 [4] 的引用是恰当的（已标注摘要未给幅度），但“自动指标下的原始分数需要人工核验”这一推论方向在摘要中并无直接支撑：摘要只说发布了基于人工评测的更新数字，未说明原数字是偏高还是偏低，也未说明自动指标失效。建议改为“摘要未说明更新方向与幅度，故本报告不对自动指标与人工判定的一致性作任何判断”。",
+            "action": "rewrite",
+            "severity": "advisory",
+            "status": "open",
+            "search_query": ""
+          },
+          {
+            "issue_id": "I5",
+            "category": "structure",
+            "location": "范围界定与文献关系表 表注；全文各节“依据”行",
+            "quote": "需要说明：表中“直接/相邻”是本次按任务设定做的归纳，不是既有分类学；相邻文献只作补充参考，不与直接相关方法比较优劣。",
+            "reason": "范围声明、相关性标注待核验、不排名、不推断领域空白等限定已在摘要、表注、各节依据行与小结中反复出现四至五次，属重复披露，稀释了实质内容。建议合并为一处集中声明（如放在范围界定节末），其余位置仅保留必要的单句限定，把节省的篇幅用于补充 [2][4][6] 的方法细节（如 [4] 的结构化输出与再验证流程、[6] 的图构建与 DLVQA 构成）。",
+            "action": "rewrite",
+            "severity": "advisory",
+            "status": "open",
+            "search_query": ""
+          },
+          {
+            "issue_id": "I6",
+            "category": "scope",
+            "location": "代表性方法路线（5）系统层输入压缩；评测局限 末段",
+            "quote": "该结果属系统效率侧证据，未评估检索增强流程本身。",
+            "reason": "[10] 为 KV-cache 服务效率基准，与“长文档 RAG 的方法、评测局限、失败案例”三个核心问题均无直接交集，稿件已自认其“未评估检索增强流程本身”。保留其作为方法路线第（5）条会误导读者以为存在“系统层输入压缩”这一 RAG 方法路线。建议将其降级到“相邻任务的补充参考”一节，或删除该条路线编号，仅在评测局限处以一句提示“效率指标需与质量同报”。",
+            "action": "rewrite",
+            "severity": "advisory",
+            "status": "open",
+            "search_query": ""
+          }
+        ]
+      }
+    },
+    {
+      "node": "revise"
+    },
+    {
+      "node": "critique",
+      "critique": {
+        "coverage": 3,
+        "evidence": 4,
+        "clarity": 5,
+        "needs_revision": false,
+        "issues": [],
+        "details": [
+          {
+            "issue_id": "I1",
+            "category": "scope",
+            "location": "摘要；范围界定与文献关系表；直接相关文献的方法要点；小结第1条",
+            "quote": "给定文献中未见纯文本单篇超长文档 RAG 方法的摘要，故本报告不覆盖该方向，也不对其作任何方法学判断。",
+            "reason": "已解决：摘要明确收缩交付范围并声明不覆盖纯文本单篇超长文档 RAG；范围界定节把 [1][5][7] 标为相邻、仅作背景参考，不再作为“代表性方法路线”主体；方法要点节只归纳 [2][4][6] 且声明不比较相对增益；小结第1条重复该覆盖边界。标题也已改为“给定摘要范围内”。覆盖度仍为 3 分，原因是给定材料本身缺少纯文本长文档 RAG 摘要，属材料限制而非稿件缺陷，不构成阻断。",
+            "action": "rewrite",
+            "severity": "blocking",
+            "status": "resolved",
+            "search_query": ""
+          },
+          {
+            "issue_id": "I2",
+            "category": "overclaim",
+            "location": "小结第4条；直接相关文献的方法要点（[4] 段）",
+            "quote": "“RAG 是否优于长上下文”在摘要层面不是单一结论：[4] 的结果限于 QUEST-LOFT 单一基准与特定结构化输出、再验证设置；[10] 表明效率结论取决于负载。",
+            "reason": "已解决：原“孰优取决于输出格式与验证步骤”的一般性判断已删除，改为限定于单一基准与特定设置的表述，并在方法要点节声明不比较相对增益。",
+            "action": "rewrite",
+            "severity": "advisory",
+            "status": "resolved",
+            "search_query": ""
+          },
+          {
+            "issue_id": "I3",
+            "category": "evidence",
+            "location": "失败案例：作者报告的实验结果类",
+            "quote": "摘要未说明该比例的基数与口径（是相对差距缩小还是绝对点提升），也未说明对应四种证据设置中的哪一种，故本报告不将其解读为绝对准确率提升",
+            "reason": "已解决：已显式披露 17–24% 的基数与口径未知，并限定不解读为绝对准确率提升。",
+            "action": "disclose",
+            "severity": "advisory",
+            "status": "resolved",
+            "search_query": ""
+          },
+          {
+            "issue_id": "I4",
+            "category": "citation",
+            "location": "评测局限 其三；证据缺口第3条",
+            "quote": "QUEST-LOFT 工作称基于细致人工评测发布了更新后的数字，但摘要未说明更新的方向与幅度，故本报告不对自动指标与人工判定的一致性作任何判断",
+            "reason": "已解决：原“自动指标下的原始分数需要人工核验”的推论已删除，改为不作一致性判断，与摘要可支持范围一致。",
+            "action": "rewrite",
+            "severity": "advisory",
+            "status": "resolved",
+            "search_query": ""
+          },
+          {
+            "issue_id": "I5",
+            "category": "structure",
+            "location": "范围界定与文献关系表 末段集中声明",
+            "quote": "集中声明如下，后文不再重复：表中“直接/相邻”是本次按任务设定做的归纳，不是既有分类学；相邻文献只作背景参考，不与直接相关文献比较优劣",
+            "reason": "已解决：限定语已合并为范围界定节末的集中声明，其余章节仅保留必要单句限定，重复披露明显减少。",
+            "action": "rewrite",
+            "severity": "advisory",
+            "status": "resolved",
+            "search_query": ""
+          },
+          {
+            "issue_id": "I6",
+            "category": "scope",
+            "location": "相邻任务的背景参考 末段；评测局限 末段",
+            "quote": "系统效率方面，KV-cache 优化基准在 LongBench 风格的多文档 QA、单文档 QA 等负载上比较量化、剪枝与合并类机制……该文未评估检索增强流程本身。",
+            "reason": "已解决：[10] 已从方法路线编号中移除，降级到“相邻任务的背景参考”，并保留“未评估检索增强流程本身”的限定；评测局限处仅以一句提示质量与效率同报。",
+            "action": "rewrite",
+            "severity": "advisory",
+            "status": "resolved",
+            "search_query": ""
+          },
+          {
+            "issue_id": "I7",
+            "category": "evidence",
+            "location": "失败案例 节标题与首段",
+            "quote": "摘要中出现的失败描述多为作者提出方法时的动机陈述，而非独立的错误分析，二者需分开陈述。",
+            "reason": "新增（advisory）：该节已按“作者问题陈述/作者报告结果”二分，并声明无频次分布、不作失败模式排序，处理得当；仅建议在节末补一句说明 [2] 的 oracle 81.7% 上限与 17–24% 缩小均来自同一基准的特定证据设置，避免读者把两者当作独立复现证据。",
+            "action": "disclose",
+            "severity": "advisory",
+            "status": "open",
+            "search_query": ""
+          }
+        ]
+      }
+    },
+    {
+      "node": "report"
+    }
+  ],
+  "usage": {
+    "calls": 12,
+    "input_tokens": 59799,
+    "output_tokens": 15002,
+    "total_tokens": 74801
+  }
+}

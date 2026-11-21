@@ -1,0 +1,8 @@
+# 只负责 Python 本体；torch 和其余依赖用 pip 安装，步骤见 README。
+name: research-agent
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip

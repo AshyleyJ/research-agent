@@ -1,0 +1,19 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/
+outputs/
+.streamlit/secrets.toml
+.vscode/
+# Machine-specific deployment notes; use docs/deployment.md for public instructions.
+DEPLOYMENT.md
+backups/
+*.log
+*.pid
+*.sock
+*.tar.gz
+supervisord.conf
